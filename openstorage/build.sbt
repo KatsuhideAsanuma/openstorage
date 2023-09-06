@@ -20,3 +20,8 @@ libraryDependencies ++= Seq(
   "mysql" % "mysql-connector-java" % "8.0.26",
   "org.redisson" % "redisson" % "3.16.4"
 )
+// build.sbtにAkkaの依存関係を追加
+libraryDependencies ++= Seq(
+  "com.typesafe.akka" %% "akka-actor" % "2.6.x",
+  "com.typesafe.akka" %% "akka-stream" % "2.6.x"
+)
