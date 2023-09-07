@@ -25,3 +25,4 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-actor" % "2.6.x",
   "com.typesafe.akka" %% "akka-stream" % "2.6.x"
 )
+libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "5.1.0" % Test
