@@ -170,3 +170,6 @@ CREATE TABLE `tag_metadata_relationship` (
   FOREIGN KEY (`tag_id`) REFERENCES `tag`(`id`),
   FOREIGN KEY (`metadata_id`) REFERENCES `metadata`(`id`)
 );
+
+ALTER TABLE users_table ADD UNIQUE (email);
+ALTER TABLE users_table ADD UNIQUE (tag_name);

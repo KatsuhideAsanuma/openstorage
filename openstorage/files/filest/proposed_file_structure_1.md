@@ -19,18 +19,6 @@ Here's the refined file structure for the project considering the feedback and i
 │   │   ├── Text.scala                  # Model for text data
 │   │   ├── Video.scala                 # Model for video data
 │   │   └── Music.scala                 # Model for music data
-
-│   ├── errors/
-│   │   ├── InvalidUserTypeError.scala
-│   │   ├── EmailAlreadyRegisteredError.scala
-│   │   └── UserNotFoundError.scala
-
-│   ├── middleware/
-│   │   └── ErrorHandler.scala
-
-│   ├── logging/
-│   │   ├── LoggerConfig.scala
-│   │   └── LogUtility.scala
 │   ├── views/
 │   │   ├── ...                         # Templates and views for the application
 │   ├── utils/
