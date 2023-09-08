@@ -22,7 +22,14 @@ libraryDependencies ++= Seq(
 )
 // build.sbtにAkkaの依存関係を追加
 libraryDependencies ++= Seq(
-  "com.typesafe.akka" %% "akka-actor" % "2.6.x",
-  "com.typesafe.akka" %% "akka-stream" % "2.6.x"
+"com.typesafe.akka" %% "akka-actor" % "2.6.5",
+"com.typesafe.akka" %% "akka-stream" % "2.6.5"
 )
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "5.1.0" % Test
+
+libraryDependencies ++= Seq(
+  "com.typesafe.slick" %% "slick" % "3.3.3",
+  "com.typesafe.slick" %% "slick-hikaricp" % "3.3.3"
+)
+libraryDependencies += "com.typesafe.play" %% "play-slick" % "5.0.0"
+libraryDependencies += "com.typesafe.play" %% "play-slick-evolutions" % "5.0.0"

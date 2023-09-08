@@ -2,20 +2,23 @@ package models
 
 import slick.jdbc.MySQLProfile.api._
 import scala.concurrent.{Future, ExecutionContext}
-
-case class User(id: Long, name: String, email: String, password: String)
-
-class UserTable(tag: Tag) extends Table[User](tag, "user") {
-  def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
-  def name = column[String]("name")
-  def email = column[String]("email")
-  def password = column[String]("password")
-  def * = (id, name, email, password) <> (User.tupled, User.unapply)
-}
+import javax.inject.Inject
+import play.api.db.slick.DatabaseConfigProvider
+import slick.jdbc.JdbcProfile
 
 class UserModel @Inject()(protected val dbConfigProvider: DatabaseConfigProvider)(implicit ec: ExecutionContext) {
   val dbConfig = dbConfigProvider.get[JdbcProfile]
-  val db = dbConfig.db
+  import dbConfig._
+  import profile.api._
+
+  class UserTable(tag: Tag) extends Table[User](tag, "user") {
+    def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
+    def name = column[String]("name")
+    def email = column[String]("email")
+    def password = column[String]("password")
+    def * = (id, name, email, password) <> (User.tupled, User.unapply)
+  }
+
   val users = TableQuery[UserTable]
 
   // ユーザー作成

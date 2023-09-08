@@ -1,18 +1,16 @@
 package services
 
-import javax.inject._
-import models.Data
-import models.DataTable
+import javax.inject.Inject
 import play.api.db.slick.DatabaseConfigProvider
 import slick.jdbc.JdbcProfile
-import org.redisson.api.RedissonClient
-import scala.concurrent.{Future, ExecutionContext}
+import scala.concurrent.{ExecutionContext, Future}
 
-class DataService @Inject()(protected val dbConfigProvider: DatabaseConfigProvider, redisson: RedissonClient)(implicit ec: ExecutionContext) {
+class DataService @Inject()(protected val dbConfigProvider: DatabaseConfigProvider, redisson: RedissonClient)
+                           (implicit ec: ExecutionContext) {
   val dbConfig = dbConfigProvider.get[JdbcProfile]
-  val db = dbConfig.db
-  val data = TableQuery[DataTable]
-  val bucket = redisson.getBucket("data")
+  import dbConfig._
+  import profile.api._
+
 
   // データ作成
   def createData(data: Data): Future[Data] = db.run(data returning data += data)
